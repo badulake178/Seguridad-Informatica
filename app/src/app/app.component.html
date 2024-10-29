@@ -1,22 +1,41 @@
-<form>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
   <div class="form-group">
     <label for="exampleInputEmail1">Texto</label>
     <br />
-    <textarea></textarea>
+    <textarea
+      type="text"
+      formControlName="texto"
+      required
+      placeholder="Escribe aquí el texto"
+    ></textarea>
+    <br />
+
+    <label>
+      <input type="checkbox" formControlName="desencriptar" (change)="onCheckboxChange('desencriptar')" />
+      Desencriptar
+    </label>
     <br />
     <label>
-    <input type="checkbox" id="cbox1" value="first_checkbox" />Desencriptar</label>
+      <input type="checkbox" formControlName="encriptar" (change)="onCheckboxChange('encriptar')" />
+      Encriptar
+    </label>
     <br />
-    <input type="checkbox" id="cbox2" value="second_checkbox" />
-    <label for="cbox2">Encriptar</label>
-    <br />
-    <select>
-      <option value="1">Incriptacion 1</option>
-      <option value="2">Incriptacion 2</option>
+
+    <label for="algoritmo">Selecciona el algoritmo:</label>
+    <select formControlName="algoritmo" required>
+      <option value="1">Encriptación de Desplazamiento</option>
+      <option value="2">Encriptación de Sustitución Invertida</option>
     </select>
     <br />
-    <button>
+
+    <button type="submit" [disabled]="form.invalid">
       Enviar
     </button>
   </div>
 </form>
+
+<div>
+  <label>Respuesta</label>
+  <br />
+  <textarea readonly>{{ respuesta }}</textarea>
+</div>
