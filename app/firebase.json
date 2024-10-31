@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/angular-firebase-deployment",
+    "public": "dist/app",
     "ignore": [
       "firebase.json",
       "**/.*",
