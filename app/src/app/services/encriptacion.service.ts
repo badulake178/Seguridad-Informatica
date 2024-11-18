@@ -59,21 +59,44 @@ export class EncriptacionService {
 
 
   // Algoritmo de Sustitución Invertida
-  encriptarInversion(texto: string): string {
+  encriptarAlgoritmo_2(texto: string): string {
     return texto
       .split('')
       .map((char) => {
-        if (char.match(/[a-z]/i)) {
-          const code = char.charCodeAt(0);
-          const base = code >= 65 && code <= 90 ? 65 : 97;
-          return String.fromCharCode(base + (25 - (code - base)));
-        }
-        return char;
+        const esMayuscula = char === char.toUpperCase();
+        const letra = char.toLowerCase();
+        const index = this.abecedario.indexOf(letra);
+
+        // Primer nivel: cambiar extremo a extremo
+        let nivel1Posicion = 27 - index;
+        if (letra === 'n') nivel1Posicion = 14;
+        const nivel1Letra = this.abecedario[nivel1Posicion - 1];
+
+
+        return esMayuscula ? nivel1Letra.toUpperCase() : nivel1Letra;
+        //return nivel1Letra;
       })
       .join('');
   }
 
-  desencriptarInversion(texto: string): string {
-    return this.encriptarInversion(texto); // En este caso, es simétrico
+  desencriptarAlgoritmo_2(texto: string): string {
+    return texto
+      .split('')
+      .map((char) => {
+        const esMayuscula = char === char.toUpperCase();
+        const letra = char.toLowerCase();
+        const index = this.abecedario.indexOf(letra);
+
+        if (index === -1) return char; // Si no es una letra, se deja igual
+
+        // Segundo nivel: invertir el cambio de extremo a extremo
+        let nivel1Posicion = 27 - index;
+        if (letra === 'n') nivel1Posicion = 13;
+        const nivel1Letra = this.abecedario[nivel1Posicion - 1];
+
+        return esMayuscula ? nivel1Letra.toUpperCase() : nivel1Letra;
+        //return nivel1Posicion;
+      })
+      .join('');
   }
 }
