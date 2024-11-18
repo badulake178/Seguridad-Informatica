@@ -28,13 +28,13 @@ export class AppComponent implements OnInit{
 
     if (encriptar) {
       if (algoritmo === '1') {
-        this.respuesta = this.encriptacionService.encriptarDesplazamiento(texto);
+        this.respuesta = this.encriptacionService.encriptarAlgoritmo_1(texto);
       } else if (algoritmo === '2') {
         this.respuesta = this.encriptacionService.encriptarInversion(texto);
       }
     } else if (desencriptar) {
       if (algoritmo === '1') {
-        this.respuesta = this.encriptacionService.desencriptarDesplazamiento(texto);
+        this.respuesta = this.encriptacionService.desencriptarAlgoritmo_1(texto);
       } else if (algoritmo === '2') {
         this.respuesta = this.encriptacionService.desencriptarInversion(texto);
       }
