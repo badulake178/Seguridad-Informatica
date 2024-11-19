@@ -10,21 +10,21 @@
     ></textarea>
     <br />
 
-    <label>
-      <input type="checkbox" formControlName="desencriptar" (change)="onCheckboxChange('desencriptar')" />
-      Desencriptar
-    </label>
-    <br />
+
     <label>
       <input type="checkbox" formControlName="encriptar" (change)="onCheckboxChange('encriptar')" />
       Encriptar
+    </label>
+    <br />
+    <label>
+      <input type="checkbox" formControlName="desencriptar" (change)="onCheckboxChange('desencriptar')" />
+      Desencriptar
     </label>
     <br />
 
     <label for="algoritmo">Selecciona el algoritmo:</label>
     <select formControlName="algoritmo" required>
       <option value="1">algoritmo 1</option>
-      <option value="2">algotimo 2</option>
     </select>
     <br />
 
