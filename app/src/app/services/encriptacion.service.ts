@@ -16,6 +16,8 @@ export class EncriptacionService {
         const letra = char.toLowerCase();
         const index = this.abecedario.indexOf(letra);
 
+        if (index === -1) return char; // Si no es una letra, se deja igual
+
         // Primer nivel: cambiar extremo a extremo
         let nivel1Posicion = 27 - index;
         if (letra === 'n') nivel1Posicion = 14;

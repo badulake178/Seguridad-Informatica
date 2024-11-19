@@ -1,40 +1,40 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <div class="form-group">
-    <label for="exampleInputEmail1">Texto</label>
-    <br />
-    <textarea
-      type="text"
-      formControlName="texto"
-      required
-      placeholder="Escribe aquí el texto"
-    ></textarea>
-    <br />
+<div class="card">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label >Texto</label>
+      <br />
+      <textarea
+        type="text"
+        formControlName="texto"
+        required
+        placeholder="Escribe aquí el texto"
+      ></textarea>
+      <br />
+      <label>
+        <input type="checkbox" formControlName="encriptar" (change)="onCheckboxChange('encriptar')" />
+        Encriptar
+      </label>
+      <br />
+      <label>
+        <input type="checkbox" formControlName="desencriptar" (change)="onCheckboxChange('desencriptar')" />
+        Desencriptar
+      </label>
+      <br />
 
+      <label for="algoritmo">Selecciona el algoritmo:</label>
+      <select formControlName="algoritmo" required>
+        <option value="1">algoritmo 1</option>
+        <option value="2">algoritmo 2</option>
+      </select>
+      <br />
 
-    <label>
-      <input type="checkbox" formControlName="encriptar" (change)="onCheckboxChange('encriptar')" />
-      Encriptar
-    </label>
-    <br />
-    <label>
-      <input type="checkbox" formControlName="desencriptar" (change)="onCheckboxChange('desencriptar')" />
-      Desencriptar
-    </label>
-    <br />
-
-    <label for="algoritmo">Selecciona el algoritmo:</label>
-    <select formControlName="algoritmo" required>
-      <option value="1">algoritmo 1</option>
-    </select>
-    <br />
-
-    <button type="submit" [disabled]="form.invalid">
-      Enviar
-    </button>
-  </div>
-</form>
-
-<div>
+      <button type="submit" [disabled]="form.invalid">
+        Enviar
+      </button>
+    </div>
+  </form>
+</div>
+<div class="card">
   <label>Respuesta</label>
   <br />
   <textarea readonly>{{ respuesta }}</textarea>

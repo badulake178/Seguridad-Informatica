@@ -25,6 +25,8 @@ export class AppComponent implements OnInit{
 
   onSubmit() {
     const { texto, encriptar, desencriptar, algoritmo } = this.form.value;
+    console.log(this.form.value);
+
 
     if (encriptar) {
       if (algoritmo === '1') {
