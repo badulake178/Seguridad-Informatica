@@ -16,30 +16,22 @@ export class AppComponent implements OnInit{
     this.form = this.fb.group({
       texto: ['', Validators.required],
       desencriptar: false,
-      encriptar: false,
-      algoritmo: ['', Validators.required]
+      encriptar: false
     });
   }
 
   ngOnInit(): void {}
 
   onSubmit() {
-    const { texto, encriptar, desencriptar, algoritmo } = this.form.value;
+    const { texto, encriptar, desencriptar } = this.form.value;
     console.log(this.form.value);
 
 
     if (encriptar) {
-      if (algoritmo === '1') {
-        this.respuesta = this.encriptacionService.encriptarAlgoritmo_1(texto);
-      } else if (algoritmo === '2') {
-        this.respuesta = this.encriptacionService.encriptarAlgoritmo_2(texto);
-      }
+      this.respuesta = this.encriptacionService.encriptarAlgoritmo_1(texto);
     } else if (desencriptar) {
-      if (algoritmo === '1') {
-        this.respuesta = this.encriptacionService.desencriptarAlgoritmo_1(texto);
-      } else if (algoritmo === '2') {
-        this.respuesta = this.encriptacionService.desencriptarAlgoritmo_2(texto);
-      }
+      this.respuesta = this.encriptacionService.desencriptarAlgoritmo_1(texto);
+
     }
   }
 
